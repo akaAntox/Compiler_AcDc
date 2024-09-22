@@ -1,0 +1,7 @@
+
+	int tempa;
+	tempa = 5.;
+
+	float tempb;
+	tempb = tempa + 3.2;
+	print tempb;

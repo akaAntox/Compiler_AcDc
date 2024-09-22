@@ -1,0 +1,3 @@
+
+int float;
+float = 6.7;

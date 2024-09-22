@@ -1,0 +1,6 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "e:\\Projects\\Algoritmi 2\\UPO_util\\junit-platform-console-standalone-1.9.1.jar"
+    ]
+}

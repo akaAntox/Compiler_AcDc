@@ -1,0 +1,6 @@
+int
+float   floata
+print   aprintf
+nome
+intnome
+int nome

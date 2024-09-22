@@ -1,0 +1,9 @@
+float b;
+
+a = b;
+
+int a;
+
+a = b;
+
+a = 2;

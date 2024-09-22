@@ -1,0 +1,3 @@
+int b;
+b = 3 + 2 + 7;
+print b;
