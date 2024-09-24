@@ -146,7 +146,6 @@ public class TypeCheckingVisitor implements GenericVisitor {
             logger.append(String.format("Tipo inatteso \'%s\' per la costante \'%s\'", node.getType(),
                     node.getValue()));
         }
-
     }
 
     /**

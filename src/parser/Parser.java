@@ -53,20 +53,18 @@ public class Parser {
      * @throws SyntaxException
      */
     private ArrayList<NodeDecSt> parseDSs() throws SyntaxException {
-
         Token token = peekToken();
         switch (token.getTokenType()) {
-
             case TYINT:
             case TYFLOAT: // DSs -> Dcl DSs
-                NodeDecl dec = parseDcl();
-                ArrayList<NodeDecSt> retList = parseDSs();
+                NodeDecl dec = parseDcl(); // type float/int?
+                ArrayList<NodeDecSt> retList = parseDSs();  // prossima dichiarazione
                 retList.add(0, dec);
                 return retList;
             case ID:
             case PRINT: // DSs -> Stm DSs
-                NodeStm stm = parseStm();
-                ArrayList<NodeDecSt> retList1 = parseDSs();
+                NodeStm stm = parseStm(); // istruzione print/assign
+                ArrayList<NodeDecSt> retList1 = parseDSs();  // prossima dichiarazione
                 retList1.add(0, stm);
                 return retList1;
             case EOF:
@@ -137,7 +135,7 @@ public class Parser {
         switch (token.getTokenType()) {
             case INT:
             case FLOAT:
-            case ID:
+            case ID: // Exp -> Tr ExpP
                 NodeExpr ter = parseTr();
                 NodeExpr exp = parseExpP(ter);
                 return exp;
@@ -156,13 +154,13 @@ public class Parser {
     private NodeExpr parseExpP(NodeExpr leftOp) throws SyntaxException {
         Token token = peekToken();
         switch (token.getTokenType()) {
-            case PLUS:
+            case PLUS: // ExpP -> + Tr ExpP
                 match(TokenType.PLUS);
                 NodeExpr terP = parseTr();
                 NodeExpr opP = new NodeBinOp(leftOp, terP, LangOper.PLUS);
                 NodeExpr expP = parseExpP(opP);
                 return expP;
-            case MINUS:
+            case MINUS: // ExpP -> - Tr ExpP
                 match(TokenType.MINUS);
                 NodeExpr terM = parseTr();
                 NodeExpr opM = new NodeBinOp(leftOp, terM, LangOper.MINUS);
